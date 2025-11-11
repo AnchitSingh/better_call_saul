@@ -38,25 +38,25 @@ A full-stack application that coordinates three specialist AI agents (Tax CPA, L
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd multi-agent-advisory-system
+git clone https://github.com/AnchitSingh/better_call_saul
+cd better_call_saul
 ```
 
 ### 2. Backend Setup
 
 ```bash
 cd backend
+python -m venv venv
+source venv/bin/activate 
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install google-adk python-dotenv
 
-# Install dependencies
-pip install -r requirements.txt
+# Create .env file
+echo "GOOGLE_API_KEY=your_key_here" > .env
+echo "GOOGLE_GENAI_USE_VERTEXAI=FALSE" >> .env
 
-# Configure environment variables
-cp .env.example .env
-# Edit .env and add your GOOGLE_API_KEY
+# Start ADK API server
+adk api_server --allow_origins="*"
 ```
 
 **Required Backend Environment Variables:**
@@ -72,13 +72,8 @@ cp .env.example .env
 
 ```bash
 cd frontend
-
-# Install dependencies
 npm install
-
-# Configure environment variables
-cp .env.example .env
-# Edit .env if needed (default: http://localhost:8000)
+npm run dev
 ```
 
 **Required Frontend Environment Variables:**
