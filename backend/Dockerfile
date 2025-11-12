@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the backend build context (your corporate_law_squad/ folder and files)
 COPY . .
 
-RUN pip install --no-cache-dir google-adk python-dotenv
+RUN pip install --no-cache-dir google-adk google-genai fastapi uvicorn python-dotenv
 
 ENV GOOGLE_GENAI_USE_VERTEXAI=FALSE
 
